@@ -1,0 +1,6 @@
+.app-footer {
+    background-color: rgb(250, 245, 245);
+    box-shadow: 0 0.1rem 1rem rgb(128, 128, 128);
+    padding: 1rem 2rem;
+    width: 100%;
+}
