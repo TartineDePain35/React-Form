@@ -1,0 +1,29 @@
+.app-TaskDetail {
+    display: flex;
+    align-items: anchor-center;
+    width: 50%;
+}
+.app-TaskDetail-main {
+    width: 90%;
+    background-color: #d0deee;
+    margin: 2rem;
+    border-radius: 10px;
+}
+
+.app-TaskDetail-detail {
+    margin-top: 2rem;
+}
+
+.app-TaskDetail-side {
+    width: 10%;
+}
+
+.app-TaskDetail-side button {
+    background-color: rgb(156, 15, 15);
+    cursor: grab;
+}
+
+.app-TaskDetail-side button:hover {
+    background-color: rgb(218, 30, 30);
+    cursor: grab;
+}

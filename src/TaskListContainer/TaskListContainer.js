@@ -15,9 +15,7 @@ function TaskListContainer() {
     const dispatch = useDispatch();
     const storeTasks = useSelector(state => state.tasks.tasks);
 
-    useEffect(() => {
-
-    },[storeTasks]);
+    useEffect(() => {},[storeTasks]);
 
     function handleTitleChange(value) {
         setNewTaskTitle(value);

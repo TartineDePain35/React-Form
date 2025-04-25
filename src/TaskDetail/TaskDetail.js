@@ -1,31 +1,39 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import './TaskDetail.css';
 import { useParams } from 'react-router';
-import { Link } from 'lucide-react';
+import { deleteTask } from '../Redux/taskAction';
+import { Link, Route, Trash } from 'lucide-react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router";
 
 function TaskDetail() {
     const { id } = useParams();
     const [ task, setTask ] = useState(null);
     const [ loading, setLoading ] = useState(true);
+    const navigate = useNavigate();
 
-    const storeTasks = useSelector((state) => state.tasks.tasks);
+    // Custom hooks Redux
+    const dispatch = useDispatch();
+    const storeTasks = useSelector(state => state.tasks.tasks);
 
     useEffect(() => {
-        console.log("id de tache : ", id);
         const timer = setTimeout(() => {
             setTimeout(200);
-            console.log('task:', task);
-            console.log(parseInt(id));
             const foundTask = storeTasks.find((task) => task.id === parseInt(id));
-            console.log('foundTask:', foundTask);
             if (foundTask) {
+                console.log("id de tache : ", id);
                 setTask(foundTask);
             }
             setLoading(false)
         }, 500)
         return () => clearTimeout(timer);
     }, [id, storeTasks])
+
+    function supTask() {
+        console.log("Task to delete: ", id);
+        dispatch(deleteTask(id));
+        navigate("/")
+     } 
 
     if(loading) {
         return (
@@ -41,10 +49,17 @@ function TaskDetail() {
                 <Link to="/">liste des taches</Link>
             </div>
         )
-    } 
+    }
     return (
-        <div>
-            <p>l'id de la tache {id}</p>
+        <div className='app-TaskDetail'>
+            <div className='app-TaskDetail-main'>
+                <p>Tache numero :  {id}</p>
+                <p>{ task.title }, crée le : { task.createDate} </p>
+                <p className='app-TaskDetail-detail'>{ task.detail }</p>
+            </div>
+            <div className='app-TaskDetail-side'>
+                    <button type='submit' onClick={supTask}><Trash></Trash></button>
+            </div>
         </div>
     )
 

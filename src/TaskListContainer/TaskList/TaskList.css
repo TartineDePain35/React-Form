@@ -29,6 +29,10 @@
     width: 50px;
 }
 
+.app-taskList-li-circle:hover {
+    zoom: 120%;
+}
+
 .checked {
     color: green;
 }

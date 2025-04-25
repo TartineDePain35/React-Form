@@ -64,6 +64,10 @@ form {
   margin: 1rem;;
 }
 
+form input {
+  border-radius: 10px;
+}
+
 .app-taskListContainer-form-line {
   display: flex;
   justify-content: space-evenly;
